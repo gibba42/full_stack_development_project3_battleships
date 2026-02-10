@@ -32,13 +32,10 @@ The purpose of this project is to create an interative Python program that allow
 
 The program will hide 3 ships randomly on a 6 X 6 grid. The player then has 12 turns to guess where they are. 
 
-Hits are marked as an "X" on the board. 
-
-Misses are marked with an "O". 
-
-The player must hit all three vessels to win. 
-
-There is a hint in the starting instructions to increase your odds.
+- Hits are marked as an "X" on the board. 
+- Misses are marked with an "O". 
+- The player must hit all three vessels to win. 
+- There is a hint in the starting instructions to increase your odds.
 
 ### Target Audience
 
@@ -48,7 +45,9 @@ As
 
 ## Features:
 
-The site aims to fullfil the above user stories by providing the following features:
+### Game board
+
+
 
 
 

@@ -27,11 +27,11 @@ def place_ships(num_ships):
 
 ships = place_ships(NUM_SHIPS)
 
-# For testing, remove before deploying
-print("Ships:", ships)
-
 def get_guess():
     guess = input("Guess a square (e.g. A1): ").strip().upper()
+
+    if guess == "EXIT":
+        return "EXIT"
 
     if guess == "SONAR":
         return "SONAR"
@@ -75,7 +75,8 @@ def game():
     print("Welcome to Battleship!\nThe computer has hidden three ships.")
     print("You have 12 turns to guess where they are.\nIf you hit a ship, the cell will be replaced with an X.")
     print("If you miss, the cell will be replaced with an O.\nGood luck!")
-    print("\nHint: SONAR can help you find ships.")
+    print("Hint: SONAR can help you find ships.")
+    print("You can enter 'EXIT' as a guess to leave.")
     print_board(board)
 
     turns_used = 0
@@ -89,6 +90,10 @@ def game():
         guess = get_guess()
         if guess is None:
             continue  # invalid input doesn't cost a turn
+
+        if guess == "EXIT":
+            print("You exited the game.")
+            return
         
         """
         SONAR easter egg guess
