@@ -25,23 +25,50 @@ ship_col = random_col(board)
 print(ship_row)
 print(ship_col)
 
-def game():
-    for turn in range(6):
-        guess_row = int(input("Guess Row: "))
-        guess_col = int(input("Guess Col: "))
-        guess_row -= 1
-        guess_col -= 1
+def get_guess():
+    row_input = input("Guess row (1-6): ").strip()
+    col_input = input("Guess column (A-F): ").strip().upper()
 
-        if guess_row == ship_row and guess_col == ship_col:
+    # Validate row is a number between 1 and 6
+    # Validates row is a number first:
+    if not row_input.isdigit():
+        print("Row must be a number between 1 and 6.")
+        return None
+    
+    # Then validates that it is between 1 and 6:
+    row_num = int(row_input)
+    if row_num < 1 or row_num > 6:
+        print("Please enter a number between 1 and 6.")
+        return None
+    
+    # Validate column is a single letter between A and F
+    if len(col_input) != 1 or col_input not in ["A, B, C, D, E, F"]:
+        print("Please enter a column letter between A and F.")
+        return None
+    
+    return guess_row, guess_col
+
+def game():
+    print_board(board)
+
+    for turn in range(6):
+        guess = get_guess()
+        # If a guess is invalid, don't count the turn
+        if guess is None:
+            continue
+
+        guess_row, guess_col = guess
+
+        if guess_row == ship_row and guess_col:
             print("Congratulations! You sunk the battleship!")
             break
         else:
-            if (guess_row < 1 or guess_row > 6) or (guess_col < 1 or guess_col > 6):
-                print("Please enter a guess between 1 and 6.")
-
+            if board[guess_row][guess_col] == "O":
+                print("You already guessed that square.")
             else:
                 print("Miss!")
                 board[guess_row][guess_col] = "O"
+
         print_board(board)
 
 game()
