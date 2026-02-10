@@ -21,4 +21,24 @@ ship_col = random_col(board)
 print(ship_row)
 print(ship_col)
 
-print_board(board)
+def game():
+    for turn in range(6):
+        guess_row = int(input("Guess Row: "))
+        guess_col = int(input("Guess Col: "))
+        guess_row -= 1
+        guess_col -= 1
+
+        if guess_row == ship_row and guess_col == ship_col:
+            print("Congratulations! You sunk the battleship!")
+            break
+        else:
+            if (guess_row < 0 or guess_row > 6) or (guess_col < 0 or guess_col > 6):
+                print("Please enter a guess between 0 and 5.")
+
+            else:
+                print("Miss!")
+                board[guess_row][guess_col] = "O"
+                print("Turn ") + turn
+        print_board(board)
+
+game()
