@@ -81,6 +81,7 @@ def game():
     turns_used = 0
     max_turns = 10
     hits = set()
+    sonar_used = False
 
     while turns_used < max_turns:
         print(f"\nTurn {turns_used + 1} of {max_turns}")
@@ -89,14 +90,23 @@ def game():
         if guess is None:
             continue  # invalid input doesn't cost a turn
         
-        # SONAR easter egg guess:
+        """
+        SONAR easter egg guess
+        If the player types SONAR, it will reveal the location of a remaining ship.
+        SONAR can only be used once per game.
+        """
         if guess == "SONAR":
+            if sonar_used:
+                print("You have already used SONAR this game.")
+                continue # Doesn't cost a turn
+
+            sonar_used = True
             # Find a remaining ship
             remaining_ships = ships - hits
             r, c = next(iter(remaining_ships))
-            print(f"There is a ship in row {r + 1}, and a ship in column {LETTERS[c]}")
+            print(f"There is a ship in {LETTERS[c]}{r + 1}")
 
-            continue
+            continue # Doesn't cost a turn
 
         guess_row, guess_col = guess
 
