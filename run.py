@@ -1,5 +1,7 @@
 from random import randint
 
+LETTERS = ["A", "B", "C", "D", "E", "F"]
+
 board = []
 
 for x in range(6):
@@ -48,7 +50,7 @@ def get_guess():
         return None
 
     # Validate column
-    if col_char not in ["A", "B", "C", "D", "E", "F"]:
+    if col_char not in LETTERS:
         print("Column must be between A and F.")
         return None
 
@@ -60,31 +62,44 @@ def get_guess():
 
     # Convert to 0-based indices
     guess_row = row_num - 1
-    guess_col = ["A", "B", "C", "D", "E", "F"].index(col_char)
+    guess_col = LETTERS.index(col_char)
 
     return guess_row, guess_col
 
 def game():
     print_board(board)
 
-    for turn in range(6):
+    turns_used = 0
+    max_turns = 6
+
+    while turns_used < max_turns:
+        print(f"\nTurn {turns_used + 1} of {max_turns}")
+
         guess = get_guess()
-        # If a guess is invalid, don't count the turn
         if guess is None:
-            continue
+            continue  # invalid input doesn't cost a turn
 
         guess_row, guess_col = guess
+
+        # Duplicate guess check (doesn't cost a turn)
+        if board[guess_row][guess_col] == "O":
+            print("You already guessed that square. Try a different one.")
+            continue
+
+        # Only now do we count the turn (valid + new guess)
+        turns_used += 1
 
         if guess_row == ship_row and guess_col == ship_col:
             print("Congratulations! You sunk the battleship!")
             break
         else:
-            if board[guess_row][guess_col] == "O":
-                print("You already guessed that square.")
-            else:
-                print("Miss!")
-                board[guess_row][guess_col] = "O"
+            print("Miss!")
+            board[guess_row][guess_col] = "O"
 
         print_board(board)
+
+    else:
+        print("\nGame over! You ran out of turns.")
+        print(f"The ship was at {LETTERS[ship_col]}{ship_row + 1}")
 
 game()
