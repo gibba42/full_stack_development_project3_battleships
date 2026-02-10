@@ -91,6 +91,8 @@ def game():
 
         if guess_row == ship_row and guess_col == ship_col:
             print("Congratulations! You sunk the battleship!")
+            board[guess_row][guess_col] = "X"
+            print_board(board)
             break
         else:
             print("Miss!")
