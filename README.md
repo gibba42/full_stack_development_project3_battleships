@@ -2,8 +2,9 @@
 
 ## Python Battleship Game
 
-This project is a simple command line Battleship game. 
-Languages used: Python. 
+![Python Battleship Game](assets/images/battleship_banner.png)
+
+This project is a simple command line Battleship game built in Python.
 
 ## Table of contents:
 1. [**Live Site**](#live-site)
@@ -25,13 +26,31 @@ Languages used: Python.
 
 ## Project Purpose
 
+The purpose of this project is to create an interative Python program that allows users to play a simple version of the "Battleship" game against a computer.
+
+## Rules
+
+The program will hide 3 ships randomly on a 6 X 6 grid. The player then has 12 turns to guess where they are. 
+
+Hits are marked as an "X" on the board. 
+
+Misses are marked with an "O". 
+
+The player must hit all three vessels to win. 
+
+There is a hint in the starting instructions to increase your odds.
+
 ### Target Audience
 
 ### User Stories
 
+As 
+
 ## Features:
 
 The site aims to fullfil the above user stories by providing the following features:
+
+
 
 ## Bugs
 
@@ -52,6 +71,7 @@ The project has been thoroughly tested, both manually and using automated tests.
 |------|------|------|------|------|
 
 
+
 ### Automated testing
 
 ## Deployment
@@ -67,4 +87,14 @@ This project was deployed using **GitHub Pages**.
 
 ## Credits
 
+Inspiration and help building the functions was taken from:
+
+1. "Let's build a simple "Battleship" game from pyshine.com/Make-a-battleship-game/
+2. "Python battleship program (2player or 1 player) from Stack Exchange user Dakota Vaughn on codereview.stackexhange.com
+
 ## Future Improvements
+
+1. Make the ships different sizes (i.e. two consecutive cells long).
+2. Make the SONAR easter egg reveal the row of one remaining ship, and the column of another.
+3. Add a "Play again?" loop.
+4. Let the player place ships, and let the computer try and guess their location. 

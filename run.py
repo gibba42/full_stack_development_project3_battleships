@@ -72,14 +72,14 @@ def get_guess():
     return guess_row, guess_col
 
 def game():
-    print("Welcome to Battleship! The computer has hidden three ships.")
-    print("\nYou have 10 turns to guess where they are.\nIf you hit a ship, the cell will be replaced with an X.")
-    print("\nf you miss, the cell will be replaced with an O.\nGood luck!")
+    print("Welcome to Battleship!\nThe computer has hidden three ships.")
+    print("You have 12 turns to guess where they are.\nIf you hit a ship, the cell will be replaced with an X.")
+    print("If you miss, the cell will be replaced with an O.\nGood luck!")
     print("\nHint: SONAR can help you find ships.")
     print_board(board)
 
     turns_used = 0
-    max_turns = 10
+    max_turns = 12
     hits = set()
     sonar_used = False
 
