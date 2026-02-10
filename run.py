@@ -12,12 +12,10 @@ for x in range(6):
     board.append(["~"] * 6)
 
 def print_board(board):
-    for row in board:
-        print((" ").join(row))
-
-# Game start message
-print("Let's play Battleship!")
-print_board(board)
+    letters = "A B C D E F" # Print a letter for each column
+    print(" " + letters)
+    for i, row in enumerate(board): # Print a number on each row
+        print(str(i + 1) + " " + " ".join(row))
 
 """
 Randomly places ships.
