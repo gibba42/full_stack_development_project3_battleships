@@ -22,33 +22,46 @@ def random_col(board):
 ship_row = random_row(board)
 ship_col = random_col(board)
 
+# For testing, remove before deploying
 print(ship_row)
 print(ship_col)
 
 def get_guess():
-    row_input = input("Guess row (1-6): ").strip()
-    col_input = input("Guess column (A-F): ").strip().upper()
+    guess = input("Guess a square (e.g. A1): ").strip().upper()
 
-    # Validate row is a number between 1 and 6
-    # Validates row is a number first:
-    if not row_input.isdigit():
-        print("Row must be a number between 1 and 6.")
+    # Must be exactly 2 characters
+    if len(guess) != 2:
+        print("Please enter a guess like A1.")
         return None
-    
-    # Then validates that it is between 1 and 6:
-    row_num = int(row_input)
+
+    char1, char2 = guess[0], guess[1]
+
+    # Determine which is letter and which is number
+    if char1.isalpha() and char2.isdigit():
+        col_char = char1
+        row_char = char2
+    elif char1.isdigit() and char2.isalpha():
+        row_char = char1
+        col_char = char2
+    else:
+        print("Guess must contain one letter and one number (e.g. A1).")
+        return None
+
+    # Validate column
+    if col_char not in ["A", "B", "C", "D", "E", "F"]:
+        print("Column must be between A and F.")
+        return None
+
+    # Validate row
+    row_num = int(row_char)
     if row_num < 1 or row_num > 6:
-        print("Please enter a number between 1 and 6.")
+        print("Row must be between 1 and 6.")
         return None
-    
-    # Validate column is a single letter between A and F
-    if len(col_input) != 1 or col_input not in ["A", "B", "C", "D", "E", "F"]:
-        print("Please enter a column letter between A and F.")
-        return None
-    
+
+    # Convert to 0-based indices
     guess_row = row_num - 1
-    guess_col = ["A", "B", "C", "D", "E", "F"].index(col_input)
-    
+    guess_col = ["A", "B", "C", "D", "E", "F"].index(col_char)
+
     return guess_row, guess_col
 
 def game():

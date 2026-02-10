@@ -37,7 +37,7 @@ The site aims to fullfil the above user stories by providing the following featu
 
 | Title | Description | Fix | Status |
 |-------|-------------|-----|--------|
-| Guesses incorrectly being flagged as invalid | Even when the user enters a valid guess, it is being flagged as invalid. | In progress | Unresolved |
+| Guesses incorrectly being flagged as invalid | Even when the user enters a valid guess, it is being flagged as invalid. | Updated the get_guess function so that users can guess in a more intuitive "cell" system, i.e. A1 rather than row 1, column 1. Updated the validation rules so that validation occurs on 0 indexed versions of these guesses. | Resolved |
 | Win condition set incorrectly | The win condition of the player guessing the ship's row and column was not set properly for its column, meaning that players did not have to guess the column correctly to win. | Updated "if guess_row == ship_row and guess_col" to include "== ship_col" at the end.| Resolved |
 
 ## Testing
