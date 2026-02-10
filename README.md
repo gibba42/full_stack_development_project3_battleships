@@ -38,6 +38,7 @@ The site aims to fullfil the above user stories by providing the following featu
 | Title | Description | Fix | Status |
 |-------|-------------|-----|--------|
 | Guesses incorrectly being flagged as invalid | Even when the user enters a valid guess, it is being flagged as invalid. | In progress | Unresolved |
+| Win condition set incorrectly | The win condition of the player guessing the ship's row and column was not set properly for its column, meaning that players did not have to guess the column correctly to win. | Updated "if guess_row == ship_row and guess_col" to include "== ship_col" at the end.| Resolved |
 
 ## Testing
 

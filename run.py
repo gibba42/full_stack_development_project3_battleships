@@ -42,9 +42,12 @@ def get_guess():
         return None
     
     # Validate column is a single letter between A and F
-    if len(col_input) != 1 or col_input not in ["A, B, C, D, E, F"]:
+    if len(col_input) != 1 or col_input not in ["A", "B", "C", "D", "E", "F"]:
         print("Please enter a column letter between A and F.")
         return None
+    
+    guess_row = row_num - 1
+    guess_col = ["A", "B", "C", "D", "E", "F"].index(col_input)
     
     return guess_row, guess_col
 
@@ -59,7 +62,7 @@ def game():
 
         guess_row, guess_col = guess
 
-        if guess_row == ship_row and guess_col:
+        if guess_row == ship_row and guess_col == ship_col:
             print("Congratulations! You sunk the battleship!")
             break
         else:
