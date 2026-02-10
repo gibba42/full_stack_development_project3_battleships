@@ -69,10 +69,13 @@ def get_guess():
     return guess_row, guess_col
 
 def game():
+    print("Welcome to Battleship! The computer has hidden three ships.")
+    print("\nYou have 10 turns to guess where they are.\nIf you hit a ship, the cell will be replaced with an X.")
+    print("\nf you miss, the cell will be replaced with an O.\nGood luck!")
     print_board(board)
 
     turns_used = 0
-    max_turns = 6
+    max_turns = 10
     hits = set()
 
     while turns_used < max_turns:
@@ -109,6 +112,11 @@ def game():
         print_board(board)
 
     else:
+        for (r, c) in ships:
+            if (r, c) not in hits and board[r][c] == "~":
+                board[r][c] = "S"
         print("\nGame over! You ran out of turns.")
+        print("\nHere are the remaining ships:")
+        print_board(board)
 
 game()
