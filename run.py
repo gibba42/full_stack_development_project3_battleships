@@ -1,6 +1,7 @@
 from random import randint
 
 LETTERS = ["A", "B", "C", "D", "E", "F"]
+NUM_SHIPS = 3
 
 board = []
 
@@ -15,18 +16,19 @@ def print_board(board):
     for i, row in enumerate(board, start=1):
         print(f"{i} " + " ".join(row))
 
-def random_row(board):
-    return randint(0, len(board[0]) - 1)
+def place_ships(num_ships):
+    # Generate three, unique ship placements:
+    ships = set()
+    while len(ships) < num_ships:
+        r = randint(0, 6 - 1)
+        c = randint(0, 6 - 1)
+        ships.add((r, c))
+    return ships
 
-def random_col(board):
-    return randint(0, len(board[0]) - 1)
-
-ship_row = random_row(board)
-ship_col = random_col(board)
+ships = place_ships(NUM_SHIPS)
 
 # For testing, remove before deploying
-print(ship_row)
-print(ship_col)
+print("Ships:", ships)
 
 def get_guess():
     guess = input("Guess a square (e.g. A1): ").strip().upper()
@@ -71,6 +73,7 @@ def game():
 
     turns_used = 0
     max_turns = 6
+    hits = set()
 
     while turns_used < max_turns:
         print(f"\nTurn {turns_used + 1} of {max_turns}")
@@ -86,14 +89,19 @@ def game():
             print("You already guessed that square. Try a different one.")
             continue
 
-        # Only now do we count the turn (valid + new guess)
+        # Increase turn counter on valid guess:
         turns_used += 1
 
-        if guess_row == ship_row and guess_col == ship_col:
-            print("Congratulations! You sunk the battleship!")
+        if (guess_row, guess_col) in ships:
+            print("Hit!")
             board[guess_row][guess_col] = "X"
-            print_board(board)
-            break
+            hits.add((guess_row, guess_col))
+
+            if len(hits) == NUM_SHIPS:
+                print("You hit all the ships. You win!")
+                print_board(board)
+                return
+            
         else:
             print("Miss!")
             board[guess_row][guess_col] = "O"
@@ -102,6 +110,5 @@ def game():
 
     else:
         print("\nGame over! You ran out of turns.")
-        print(f"The ship was at {LETTERS[ship_col]}{ship_row + 1}")
 
 game()
