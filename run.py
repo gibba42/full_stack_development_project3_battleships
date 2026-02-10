@@ -33,6 +33,9 @@ print("Ships:", ships)
 def get_guess():
     guess = input("Guess a square (e.g. A1): ").strip().upper()
 
+    if guess == "SONAR":
+        return "SONAR"
+
     # Must be exactly 2 characters
     if len(guess) != 2:
         print("Please enter a guess like A1.")
@@ -72,6 +75,7 @@ def game():
     print("Welcome to Battleship! The computer has hidden three ships.")
     print("\nYou have 10 turns to guess where they are.\nIf you hit a ship, the cell will be replaced with an X.")
     print("\nf you miss, the cell will be replaced with an O.\nGood luck!")
+    print("\nHint: SONAR can help you find ships.")
     print_board(board)
 
     turns_used = 0
@@ -84,6 +88,15 @@ def game():
         guess = get_guess()
         if guess is None:
             continue  # invalid input doesn't cost a turn
+        
+        # SONAR easter egg guess:
+        if guess == "SONAR":
+            # Find a remaining ship
+            remaining_ships = ships - hits
+            r, c = next(iter(remaining_ships))
+            print(f"There is a ship in row {r + 1}, and a ship in column {LETTERS[c]}")
+
+            continue
 
         guess_row, guess_col = guess
 
