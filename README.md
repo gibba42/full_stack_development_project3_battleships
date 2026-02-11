@@ -47,7 +47,53 @@ As
 
 ### Game board
 
+![Terminal game board](assets/images/game_board.png)
 
+- The game is displayed on a 6 X 6 grid in the terminal. 
+- The grid has letter headers across the columns, and numbers along the rows.
+- "Water" is represented by "~".
+
+### Computer placed ships
+
+- The program will place three ships on the grid at random.
+- Ships cannot overlap.
+- The player cannot see where the ships have been placed. 
+
+### Player guesses
+
+- The player then has 12 turns to guess where the ships are.
+- The player enters the column and row they believe a ship is. They can enter their guess in any case, and in number/column or column/number order. 
+- A guess will result in two outcomes:
+
+### Hits and misses
+
+![Player hits a ship](assets/images/hit.png)
+- If a player hits a ship, the program will tell them and place an "X" on the board where the ship was. 
+![Player misses a ship](assets/images/miss.png)
+- If a player misses, the program will tell them and place an "O" on the board where the incorrect guess was.
+
+### Player wins
+
+![Player wins](assets/images/win.png)
+- If a player hits all three ships before running out of turns, the program will congratulate the player and show the board with all three hits. 
+- The program will then stop.
+
+### Player loses
+
+![Player loses](assets/images/loss.png)
+- If a player fails to hit all three ships and runs out of turns, the program will let them know they have run out of turns.
+- The program will then stop.
+
+### Exiting the game
+
+![Player exits the game](assets/images/exit.png)
+- Whilst the program will stop in the event of a win or a loss, the player can exit at any time by entering "EXIT" as a guess.
+
+### SONAR Easter egg
+
+![Player uses SONAR](assets/images/sonar.png)
+- If a player enters "SONAR" as a guess, the program will reveal the location of one of the remaining ships.
+- This can only be used once per game. 
 
 
 
