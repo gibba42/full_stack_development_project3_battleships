@@ -169,7 +169,11 @@ This project was deployed using **GitHub Pages**.
 Inspiration and help building the functions was taken from:
 
 1. "Let's build a simple "Battleship" game from pyshine.com/Make-a-battleship-game/
-2. "Python battleship program (2player or 1 player) from Stack Exchange user Dakota Vaughn on codereview.stackexhange.com
+2. "Python battleship program (2player or 1 player)" from Stack Exchange user Dakota Vaughn on codereview.stackexhange.com
+
+Rich installation and formatting was helped with:
+
+1. "Installing and Using Rich Package in Python" from geeksforgeeks.org/python/installing-and-using-rich-package-in-python/
 
 ## Future Improvements
 

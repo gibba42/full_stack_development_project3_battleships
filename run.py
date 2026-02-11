@@ -12,6 +12,16 @@ Players can leave the game at any time by entering "EXIT" as a guess.
 
 from random import randint
 
+try:  # Optional, rich for better formatting
+    from rich.console import Console
+    from rich.table import Table
+
+    RICH_AVAILABLE = True
+    console = Console()
+except ImportError:
+    RICH_AVAILABLE = False
+    console = None
+
 LETTERS = ["A", "B", "C", "D", "E", "F"]
 NUM_SHIPS = 3
 
@@ -20,15 +30,37 @@ board = []
 for x in range(6):
     board.append(["~"] * 6)
 
+console = Console()
+
 
 def print_board(board):
-    """Display the game board with column and row headers."""
-    # Print column headers
-    print("  A B C D E F")
+    if RICH_AVAILABLE:
+        table = Table(show_header=True, header_style="bold cyan")
+        table.add_column(" ")
+        for letter in LETTERS:
+            table.add_column(letter)
 
-    # Print each row with a row number
+        for i, row in enumerate(board, start=1):
+            styled_row = []
+            for cell in row:
+                if cell == "X":
+                    styled_row.append("[bold red]X[/]")
+                elif cell == "O":
+                    styled_row.append("[blue]O[/]")
+                elif cell == "S":
+                    styled_row.append("[yellow]S[/]")
+                else:
+                    styled_row.append("~")
+            table.add_row(str(i), *styled_row)
+
+        console.print(table)
+        return
+
+    # Fallback: plain text board
+    print("  " + " ".join(LETTERS))
     for i, row in enumerate(board, start=1):
         print(f"{i} " + " ".join(row))
+
 
 
 def place_ships(num_ships):
@@ -55,7 +87,7 @@ def get_guess():
     "EXIT" which leaves the game
     "SONAR" which reveals one remaining ship
     """
-    guess = input("Guess a square (e.g. A1): ").strip().upper()
+    guess = input("Guess a square (e.g. A1): \n").strip().upper()
 
     if guess == "EXIT":
         return "EXIT"
