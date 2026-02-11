@@ -32,8 +32,8 @@ The purpose of this project is to create an interative Python program that allow
 
 The program will hide 3 ships randomly on a 6 X 6 grid. The player then has 12 turns to guess where they are. 
 
-- Hits are marked as an "X" on the board. 
-- Misses are marked with an "O". 
+- Hits are marked as an "X" on the board. Hits give players another guess without counting as a turn.
+- Misses are marked with an "O". Misses end a turn.
 - The player must hit all three vessels to win. 
 - There is a hint in the starting instructions to increase your odds.
 
@@ -79,6 +79,7 @@ As
 
 ![Player hits a ship](assets/images/hit.png)
 - If a player hits a ship, the program will tell them and place an "X" on the board where the ship was. 
+- Correct guesses give players another guess without counting as a turn.
 
 ![Player misses a ship](assets/images/miss.png)
 - If a player misses, the program will tell them and place an "O" on the board where the incorrect guess was.
@@ -137,9 +138,10 @@ The project has been thoroughly tested, both manually and using automated tests.
 | Duplicate guess does not cost a turn | Guess a square, then guess the same square again. | Game should warn the player and prompt again without incrementing the turn counter. | Duplicate guess warning shown and turn counter did not increase. | Pass |
 | Player wins only after hitting all 3 ships | Hit 1 or 2 ships, continue guessing, then hit the 3rd ship. | Game should continue after 1–2 hits and only display win message once all three ships are hit. | Win message only appeared after the third hit. | Pass |
 | Player can use SONAR once per game | Type `SONAR` during the game, then type `SONAR` again later. | First use should display a hint. Second use should display “already used” message. Neither should cost a turn. | SONAR worked once, second attempt showed “already used”. Turn counter did not increase for SONAR. | Pass |
-| SONAR hint does not reveal an exact ship location | Use SONAR and compare the hinted row/column to printed ship coordinates (testing mode). | Hint should give the row of one ship and the column of a different ship (where possible), avoiding an exact square reveal. | Hint provided row/column from different ships during testing and did not reveal an exact coordinate. | Pass |
+| SONAR hint reveals an exact ship location | Use SONAR and check the revealed coordinates with a known ship location (printed in testing mode). | Hint should reveal the exact location of a ship that has not yet been hit. | Hint provided row and column of a remaining ship. | Pass |
 | EXIT command quits the game cleanly | Type `EXIT` when prompted for a guess. | Game should print an exit message and stop immediately without error. | EXIT quit the game as expected with no errors. | Pass |
 | On loss, remaining ships are revealed with `S` | Intentionally lose by using all turns without hitting all ships. | Game should end, then board should re-print with any unhit ships marked as `S` (hits remain `X`, misses remain `O`). | On loss, remaining ships were shown as `S`; existing `X` and `O` markers remained correct. | Pass |
+| Correct guesses give players another turn | Guess the location of a ship correctly (using SONAR). | Player should be given another guess, and the turn counter should not increase. | Following a correct guess, game asked for another guess and turn count did not increase. | Pass |
 
 
 

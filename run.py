@@ -155,11 +155,8 @@ def game():
             print("You already guessed that square. Try a different one.")
             continue
 
-        # Increase turn counter on valid guess:
-        turns_used += 1
-
         if (guess_row, guess_col) in ships:
-            print("Hit!")
+            print("Hit! Guess again.")
             board[guess_row][guess_col] = "X"
             hits.add((guess_row, guess_col))
 
@@ -171,6 +168,7 @@ def game():
         else:
             print("Miss!")
             board[guess_row][guess_col] = "O"
+            turns_used += 1
 
         print_board(board)
 
@@ -182,5 +180,5 @@ def game():
         print("\nHere are the remaining ships:")
         print_board(board)
 
-game()
 
+game()
