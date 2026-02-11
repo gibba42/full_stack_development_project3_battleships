@@ -13,6 +13,7 @@ If you find all three ships, you win!
 ## Table of contents:
 1. [**Live Site**](#live-site)
 1. [**Project Purpose**](#project-purpose)
+    * [***Rules***](#rules)
     * [***Target Audience***](#target-audience)
     * [***User Stories***](#user-stories)
 1. [**Features**](#features)
@@ -42,7 +43,7 @@ https://ci-proj3-battleships-c10f2293c0bc.herokuapp.com
 
 The purpose of this project is to create an interative Python program that allows users to play a simple version of the "Battleship" game against a computer.
 
-## Rules
+### Rules
 
 The program will hide 3 ships randomly on a 6 X 6 grid. The player then has 12 turns to guess where they are. 
 
@@ -199,11 +200,8 @@ The github repository is available here:
 
 ### Deployment Steps
 1. Push final code to GitHub repository
-2. Navigate to **Settings → Pages**
-3. Select the `main` branch as the source
-4. Save and wait for deployment to complete
-5. Deploy `main` branch in Heroku
-6. Access the live site using the URL provided
+2. Deploy `main` branch in Heroku
+3. Access the live site using the URL provided
 
 ## Credits
 
