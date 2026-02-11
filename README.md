@@ -6,12 +6,24 @@
 
 This project is a simple command line Battleship game built in Python.
 
+The computer will place 3 hidden ships on a 6 X 6 grid. 
+You will then have 12 turns to try and find these ships.
+If you find all three ships, you win!
+
 ## Table of contents:
 1. [**Live Site**](#live-site)
 1. [**Project Purpose**](#project-purpose)
     * [***Target Audience***](#target-audience)
     * [***User Stories***](#user-stories)
 1. [**Features**](#features)
+    * [***Game board***](#game-board)
+    * [***Computer placed ships***](#computer-placed-ships)
+    * [***Player guesses***](#player-guesses)
+    * [***Hits and misses***](#hits-and-misses)
+    * [***Player wins***](#player-wins)
+    * [***Player loses***](#player-loses)
+    * [***Exiting the game***](#exiting-the-game)
+    * [***SONAR Easter egg***](#sonar-easter-egg)
 1. [**Bugs**](#bugs)
 1. [**Testing**](#testing)
     * [***Manual Testing***](#manual-testing)
@@ -23,6 +35,8 @@ This project is a simple command line Battleship game built in Python.
 
 
 ## Live Site
+
+https://ci-proj3-battleships-c10f2293c0bc.herokuapp.com
 
 ## Project Purpose
 
@@ -39,11 +53,26 @@ The program will hide 3 ships randomly on a 6 X 6 grid. The player then has 12 t
 
 ### Target Audience
 
+- Fans of the game Battleship
+- Fans of Python games
+- Users intersted in terminal based games
+- Python students
+
 ### User Stories
 
-As 
+As a user, I want to be able to play a simple game in a terminal.
+As a user, I want to be able to play Battleship against a computer.
+As a user, I want to be able to guess where ships are hidden.
+As a user, I want to be able to input guesses in multiple formats.
+As a user, I want feedback on whether my guesses were correct or not.
+As a user, I want to know how many turns are left in the game.
+As a user, I want the game to let me know if my input was invalid.
+As a user, I want to know if I won or lost at the end of a game.
+As a user, I want a visual representation of the game. 
 
 ## Features:
+
+The program meets these user stories by providing the following features:
 
 ### Game board
 
@@ -52,6 +81,10 @@ As
 - The game is displayed on a 6 X 6 grid in the terminal. 
 - The grid has letter headers across the columns, and numbers along the rows.
 - "Water" is represented by "~".
+
+If the user has the rich package installed, the board will instead be shown like this:
+
+![rich game board](assets/images/rich_package.png)
 
 ### Computer placed ships
 
@@ -146,9 +179,6 @@ The project has been thoroughly tested, both manually and using automated tests.
 | Rich formatting shows correctly | Install rich and run the game. | Table should format with improved table formatting. | After package was installed, table was displayed with improved headers and colours for hits and misses. | Pass |
 | Rich package fallback | Uninstall rich to check that program fallsback to the plain terminal. | After uninstalling rich, program ran with standard formatting. | Pass |
 
-
-
-
 ### Automated testing
 
 The program was run through the code:WOF Python 3 Style Checker, which checks against the PEP 8 style guide for Python Ccode and PEP 257 docstring conventions. 
@@ -159,14 +189,21 @@ The program passed with no issues found:
 
 ## Deployment
 
-This project was deployed using **GitHub Pages**.
+This project was deployed using **Heroku**.
+
+The project is available here:
+- https://ci-proj3-battleships-c10f2293c0bc.herokuapp.com
+
+The github repository is available here:
+- https://github.com/gibba42/full_stack_development_project3_battleships
 
 ### Deployment Steps
 1. Push final code to GitHub repository
 2. Navigate to **Settings → Pages**
 3. Select the `main` branch as the source
 4. Save and wait for deployment to complete
-5. Access the live site via the provided URL
+5. Deploy `main` branch in Heroku
+6. Access the live site using the URL provided
 
 ## Credits
 
