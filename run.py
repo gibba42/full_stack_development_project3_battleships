@@ -30,8 +30,6 @@ board = []
 for x in range(6):
     board.append(["~"] * 6)
 
-console = Console()
-
 
 def print_board(board):
     if RICH_AVAILABLE:

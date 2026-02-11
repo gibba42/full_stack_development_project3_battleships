@@ -142,6 +142,7 @@ The project has been thoroughly tested, both manually and using automated tests.
 | EXIT command quits the game cleanly | Type `EXIT` when prompted for a guess. | Game should print an exit message and stop immediately without error. | EXIT quit the game as expected with no errors. | Pass |
 | On loss, remaining ships are revealed with `S` | Intentionally lose by using all turns without hitting all ships. | Game should end, then board should re-print with any unhit ships marked as `S` (hits remain `X`, misses remain `O`). | On loss, remaining ships were shown as `S`; existing `X` and `O` markers remained correct. | Pass |
 | Correct guesses give players another turn | Guess the location of a ship correctly (using SONAR). | Player should be given another guess, and the turn counter should not increase. | Following a correct guess, game asked for another guess and turn count did not increase. | Pass |
+| Rich package fallback not working | When the Rich package was uninstalled, the program failed to fallback to the plain terminal.| Issue was a duplicate console = Console() line outside of the try: block. Removed this line. | Resolved |
 
 
 
