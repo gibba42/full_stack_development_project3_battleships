@@ -63,12 +63,23 @@ As
 
 - The player then has 12 turns to guess where the ships are.
 - The player enters the column and row they believe a ship is. They can enter their guess in any case, and in number/column or column/number order. 
+
+![Number then row guess](assets/images/validation_2.png)
+
+- If a player tries to guess the same cell twice, the program will ask them to choose another.
+
+![Repeated guess](assets/images/validation_3.png)
+
+- If a guess is invald, the program will remind the player of the required format and ask them to guess again:
+
+![Invalid guess](assets/images/validation_1.png)
 - A guess will result in two outcomes:
 
 ### Hits and misses
 
 ![Player hits a ship](assets/images/hit.png)
 - If a player hits a ship, the program will tell them and place an "X" on the board where the ship was. 
+
 ![Player misses a ship](assets/images/miss.png)
 - If a player misses, the program will tell them and place an "O" on the board where the incorrect guess was.
 
