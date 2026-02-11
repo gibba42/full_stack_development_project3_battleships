@@ -117,6 +117,7 @@ As
 | Win condition set incorrectly | The win condition of the player guessing the ship's row and column was not set properly for its column, meaning that players did not have to guess the column correctly to win. | Updated "if guess_row == ship_row and guess_col" to include "== ship_col" at the end.| Resolved |
 | Turn counter starts an infinite loop | The turn counter causes an infinite loop that will eventually crash the program. | The loop was caused because the turn counter was indented incorrectly. It was running when turns was less than the max amount allowed without allowing the turn counter to increase. The function is now properly indented. | Resolved |
 | SONAR easter egg always reveals the exact location of a ship | The SONAR guess is intended to show the correct column of one ship, and the correct row of another. At the moment it shows the exact location of one ship instead. | Could not fix. Instead changed the feature so that it does show the exact location of a ship, but the player can only use it once per game. | Resolved, feature changed |
+| Rich package fallback not working | When the Rich package was uninstalled, the program failed to fallback to the plain terminal.| Issue was a duplicate console = Console() line outside of the try: block. Removed this line. | Resolved |
 
 ## Testing
 
@@ -142,7 +143,9 @@ The project has been thoroughly tested, both manually and using automated tests.
 | EXIT command quits the game cleanly | Type `EXIT` when prompted for a guess. | Game should print an exit message and stop immediately without error. | EXIT quit the game as expected with no errors. | Pass |
 | On loss, remaining ships are revealed with `S` | Intentionally lose by using all turns without hitting all ships. | Game should end, then board should re-print with any unhit ships marked as `S` (hits remain `X`, misses remain `O`). | On loss, remaining ships were shown as `S`; existing `X` and `O` markers remained correct. | Pass |
 | Correct guesses give players another turn | Guess the location of a ship correctly (using SONAR). | Player should be given another guess, and the turn counter should not increase. | Following a correct guess, game asked for another guess and turn count did not increase. | Pass |
-| Rich package fallback not working | When the Rich package was uninstalled, the program failed to fallback to the plain terminal.| Issue was a duplicate console = Console() line outside of the try: block. Removed this line. | Resolved |
+| Rich formatting shows correctly | Install rich and run the game. | Table should format with improved table formatting. | After package was installed, table was displayed with improved headers and colours for hits and misses. | Pass |
+| Rich package fallback | Uninstall rich to check that program fallsback to the plain terminal. | After uninstalling rich, program ran with standard formatting. | Pass |
+
 
 
 

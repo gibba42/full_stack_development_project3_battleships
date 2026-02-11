@@ -32,6 +32,12 @@ for x in range(6):
 
 
 def print_board(board):
+    """Display the game board.
+
+    Check if rich package is installed.
+    If yes, display improved formatting.
+    If no, fallback to plain terminal.
+    """
     if RICH_AVAILABLE:
         table = Table(show_header=True, header_style="bold cyan")
         table.add_column(" ")
@@ -58,7 +64,6 @@ def print_board(board):
     print("  " + " ".join(LETTERS))
     for i, row in enumerate(board, start=1):
         print(f"{i} " + " ".join(row))
-
 
 
 def place_ships(num_ships):
